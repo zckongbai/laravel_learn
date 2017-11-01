@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('contact', function() {
+    return View::make('contact');
+});
+Route::post('contact', 'EnquiryController@index');
