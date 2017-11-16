@@ -44,3 +44,9 @@ Route::get('/redirect', function () {
 
     return redirect('http://your-app.com/oauth/authorize?'.$query);
 });
+
+Route::get('/user/encrypt', 'UserController@encrypt');
+Route::get('/user/decrypt', 'UserController@decrypt');
+
+
+
