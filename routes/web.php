@@ -33,6 +33,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/axios', 'HomeController@axios');
+Route::get('/home/orderShipped', 'HomeController@orderShipped');
+Route::get('/home/sendEmail', 'HomeController@sendEmail');
 
 Route::get('/redirect', function () {
     $query = http_build_query([

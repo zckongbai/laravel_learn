@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\OrderShipped;
+use App\Jobs\SendReminderEmail;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -29,5 +32,17 @@ class HomeController extends Controller
     public function axios()
     {
         return view('home/axios');
+    }
+
+    public function orderShipped(User $user)
+    {
+        return event(new OrderShipped($user));
+    }
+
+    public function sendEmail()
+    {
+        $user = User::find(1);
+        SendReminderEmail::dispatch($user)->onQueue('default');
+        return ;
     }
 }
