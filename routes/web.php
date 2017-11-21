@@ -50,5 +50,15 @@ Route::get('/redirect', function () {
 Route::get('/user/encrypt', 'UserController@encrypt');
 Route::get('/user/decrypt', 'UserController@decrypt');
 
+Route::get('/mailable', function () {
+    $user = App\User::find(1);
+
+    return new App\Mail\OrderShipped($user);
+});
+
+
+Route::get('/order/ship/{id}', 'OrderController@ship');
+
+Route::get('/test','QueuedController@Test');
 
 

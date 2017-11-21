@@ -179,7 +179,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         App\Providers\RiakServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
-
+        VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class,
     ],
 
     /*
