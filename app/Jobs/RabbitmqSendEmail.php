@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use Log;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -10,22 +9,18 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-use VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider;
-
-class SendReminderEmail implements ShouldQueue
+class RabbitmqSendEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $tries = 5;
-    public $user;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;   
+        //
     }
 
     /**
@@ -35,8 +30,6 @@ class SendReminderEmail implements ShouldQueue
      */
     public function handle()
     {
-        sleep(10);
-        Log::info('jobs args', func_get_args());
-        // Log::info('jobs user:' . serialize($this->user));
+        //
     }
 }
