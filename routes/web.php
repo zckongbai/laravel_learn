@@ -61,4 +61,10 @@ Route::get('/order/ship/{id}', 'OrderController@ship');
 
 Route::get('/test','QueuedController@Test');
 
+// 预览邮件
+Route::get('/mailable/{id}', function ($id) {
+    $user = App\User::find($id);
+
+    return new App\Mail\OrderShipped($user);
+});
 
