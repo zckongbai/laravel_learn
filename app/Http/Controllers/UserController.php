@@ -9,17 +9,29 @@ use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
-    function encrypt(Request $request)
+    public function encrypt(Request $request)
     {
     	$word = $request->word;
     	$encrypted = Crypt::encryptString($word);
     	return $encrypted;
     }
 
-    function decrypt(Request $request)
+    public function decrypt(Request $request)
     {
 		$encrypted = $request->encrypted;
 		$decrypted = Crypt::decryptString($encrypted);
 		return $decrypted;
     }
+
+    public function readNotifies(Request $request)
+    {
+        $user = User::find(1);
+
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+        // $user->unreadNotifications->markAsRead();
+        echo "all unread notifies is read";
+    }
+
 }
