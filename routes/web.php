@@ -49,6 +49,7 @@ Route::get('/redirect', function () {
 
 Route::get('/user/encrypt', 'UserController@encrypt');
 Route::get('/user/decrypt', 'UserController@decrypt');
+Route::get('/user/readNotifies', 'UserController@readNotifies');
 
 Route::get('/mailable', function () {
     $user = App\User::find(1);
@@ -58,6 +59,7 @@ Route::get('/mailable', function () {
 
 
 Route::get('/order/ship/{id}', 'OrderController@ship');
+Route::get('/order/notify/{id}', 'OrderController@notify');
 
 Route::get('/test','QueuedController@Test');
 
